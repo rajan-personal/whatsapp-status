@@ -18,11 +18,12 @@ def post():
     logo = request.files.get('upload-image')
     print(name, card, logo)
     image = Image.open('templates/' + card + '.jpg')
+    image = image.resize((400, 250))
     logo = Image.open(logo)
-    logo = logo.resize((80, 80))  # Resize to 80x80 pixels
-    image.paste(logo, (50, 50))  # Paste the logo at the top left corner
+    logo = logo.resize((180, 180))
+    image.paste(logo, (50, 30))
     I1 = ImageDraw.Draw(image)
-    I1.text((58, 136), name, fill=(0, 0, 0))
+    I1.text((270, 76), name, fill=(0, 0, 0), align="center")
     image.save('static/' + 'image_with_logo' + '.jpg')
     image = os.path.join('static', 'image_with_logo.jpg')
     return render_template('result.html', image=image)
