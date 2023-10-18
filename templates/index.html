@@ -15,16 +15,15 @@
 
   <h1>Create business Card</h1>
 
-  <form id="image-form">
+  <form enctype="multipart/form-data" action = "/post" method = "post">
     <label>
-      <input type="radio" name="image" value="1">
+      <input type="radio" name="template" value="1">
       <img src="https://founderx.mysave.app/templates/1.jpg" alt="Image 1">
     </label>
     <label>
-      <input type="radio" name="image" value="2">
+      <input type="radio" name="template" value="2">
       <img src="https://founderx.mysave.app/templates/2.jpg" alt="Image 2">
     </label>
-    <!-- Add more images as needed -->
     
     <br/>
     <br/>
@@ -41,27 +40,6 @@
     <input type="submit" value="Update">
     <input type="button" value="Check" onclick="window.location.href='/get'">
   </form>
-
-  <script>
-    document.getElementById('image-form').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent the form from submitting normally
-      
-      let selectedImage = document.querySelector('input[name="image"]:checked').value;
-      let name = document.getElementById('name').value;
-      let uploadImage = document.getElementById('upload-image').value;
-      fetch('/post', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          card: selectedImage,
-          name: name,
-          logo: uploadImage,
-        })
-      })
-    });
-  </script>
 
 </body>
 </html>
