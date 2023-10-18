@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + img {
+      border: 2px solid green;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="image-form">
+    <label>
+      <input type="radio" name="image" value="image1">
+      <img src="templates/1.jpg" alt="Image 1">
+    </label>
+    <label>
+      <input type="radio" name="image" value="image2">
+      <img src="templates/2.jpg" alt="Image 2">
+    </label>
+    <!-- Add more images as needed -->
+    
+    <br/>
+    <br/>
+    <label for="name">Enter your name:</label>
+    <input type="text" id="name" name="name" required>
+    <br/>
+
+    <br/>
+    <label for="upload-image">Upload your image:</label>
+    <input type="file" id="upload-image" name="upload-image" accept="image/*" required>
+    <br/>
+
+    <br/>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    document.getElementById('image-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+      
+      let selectedImage = document.querySelector('input[name="image"]:checked').value;
+      let name = document.getElementById('name').value;
+      let uploadImage = document.getElementById('upload-image').value;
+      alert('You selected: ' + selectedImage);
+      alert('Your name is: ' + name);
+      alert('Your image is: ' + uploadImage);
+    });
+  </script>
+
+</body>
+</html>
